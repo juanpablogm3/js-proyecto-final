@@ -1,6 +1,3 @@
-// sacarDelCarrito(){
-
-// }
 
 // finalizarCompra(){
 
@@ -19,6 +16,7 @@ const ordenarProductosMenor = () => {
 
 const cancelarCompra = () => {
     alert('Lamentamos que te vayas...\nPero te esperamos en tu próxima visita!');
+    itemNombre='jp';
 };
 
 
@@ -48,8 +46,11 @@ const saludoCliente = () => {
             if (opcion){
                 cancelarCompra();
             }
+            break;
+        default:
+            saludoCliente();
     }
-}
+};
 
 const agregarAlCarrito = (existeItem, itemId, itemCantidad) => {
     const itemRepetido = carrito.find(existeItem => existeItem.id === itemId);
@@ -71,16 +72,26 @@ const comprarProductos = () => {
         const lista = stock.map(stocks => {
             return `${stocks.id} - ${stocks.prod} $${stocks.precio}`;
         });
-        itemNombre = prompt('Nuestros Productos:'+'\n\n'+lista.join('\n')+'\n\nIngresa el nombre del producto a comprar:').toLowerCase();
+        let validar
+        itemNombre = prompt('Nuestros Productos:'+'\n\n'+lista.join('\n')+'\n\nIngresa el nombre del producto a comprar:\n\n');
+        if (itemNombre == null){
+            menuCompra();
+        }
         const existeItem = stock.find(item => item.prod.toLowerCase() === itemNombre.toLowerCase())
         if (existeItem) {
             itemCantidad = Number(prompt('¿Cuantas unidades quiere comprar?'));
+            if (itemCantidad <= 0){
+                alert('Por favor ingresa una cantidad, elige tu producto otra vez');
+                comprarProductos();
+            }
+            console.log(itemCantidad);
             agregarAlCarrito(existeItem, existeItem.id, itemCantidad)
         } else {
             alert('El producto no se encuentra en la lista')
         }
 
         seguirComprando = confirm('¿Desea agregar otro producto?')
+         
 
     } while (seguirComprando);
     menuCompra();
@@ -102,8 +113,11 @@ const menuCompra = () => {
             let opcion = confirm('Quieres salir del programa?')
             if (opcion){
                 cancelarCompra();
+                break;
+            } else{
+                menuCompra();
             }
-            break;
+            
         default:
             menuCompra();
     }
@@ -129,6 +143,19 @@ const verElCarrito = () => {
             menuCompra();
             break;
     }
+};
+
+const finalizarLaCompra = ()=> {
+    const miCarritoFinal = carrito.map(items => {
+        const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+        const pesoTotal = carrito.reduce((acc, item) => acc + (item.peso * item.cantidad), 0);
+
+        return `${items.cantidad}u x ${items.prod} $${items.precio} Total por producto: $`${items.cantidad * items.precio}`\n\n\n
+        Peso total del pedido: ${pesoTotal}\n\nTotal a abonar: $${precioTotal}`;
+    });
+    //ARREGLAR ESTA FUNCION
+    prompt('Totales del pedido:\n\n'+miCarritoFinal.join('\n'));    
+
 }
 
 const sacarDelCarrito = () => {
@@ -140,14 +167,15 @@ const sacarDelCarrito = () => {
     itemNombreASacar = prompt('Tu Carrito:'+'\n\n'+miCarrito.join('\n')+'\n\nQué producto quierese sacar del carrito?\n\n\nIngresa el nombre del producto\n\n\n');
     carrito.forEach((item, index) => {
         if (item.prod.toLowerCase() === itemNombreASacar.toLowerCase()) {
-            if (item.cantidad > 1 && confirm('Usted va a eliminar 1 unidad del producto '+item.prod+'\n\nEstá seguro?')) {
+            if (item.cantidad > 1 && confirm('Usted quiere eliminar 1 unidad del producto '+item.prod+'\n\nEstá seguro?')) {
                 item.cantidad--;
                 alert('El producto ha sido eliminado del carrito con éxito');
-            } else {
-                (confirm('Usted va a eliminar del carrito el producto '+item.prod+'\n\nEstá seguro?' ));
+            } else if (confirm('Usted quiere a eliminar del carrito todas las unidades del producto '+item.prod+'\n\nEstá seguro?' )){
                 carrito.splice(index, 1);
                 alert('El producto ha sido eliminado del carrito con éxito');
-            }    
+            } else {
+                verElCarrito();
+            }  
         }
     });
     verElCarrito();
@@ -156,7 +184,7 @@ const sacarDelCarrito = () => {
     
 
 const loguin = () => {
-    let adminPassword = 123456; // esto estaría en la parte del servidor
+    let adminPassword = 123456; // esto obviamente estaría en la parte del servidor :)
     let userPassword = 0;
     userPassword = Number(prompt('Ingrese la contraseña de administrador: '));
     if (adminPassword===userPassword){
