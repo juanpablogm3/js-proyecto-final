@@ -292,7 +292,6 @@ const modificarElStock = () => {
             });
             do{
                 itemElegido = Number(prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el NÚMERO del producto:\n\n\n'));
-                console.log(itemElegido);
             } while(itemElegido == null || itemElegido == 0);
             if (itemElegido >= 0 && itemElegido <= stock.length){
                 do{
