@@ -11,6 +11,7 @@ const ordenarProductosMenor = () => {
 const cancelarCompra = () => {
     alert('Lamentamos que te vayas...\nPero te esperamos en tu próxima visita!');
     alert("Gracias por usar nuestro software\n\n©2022 Todos los derechos reservados by Juan Pablo García Martínez")
+    itemNombre = '';
 };
 
 
@@ -216,17 +217,27 @@ const agregarAlStock = (nuevoItem) => {
         id: stock.length+1,
         prod: 'prodNombre',
         desc: 'prodDesc',
-        peso: 'prodPeso',
-        precio: 'prodPrecio',
+        peso: 0,
+        precio: 0,
         cantidad: 0
     };
     nuevoItem.prod = prompt('Nombre del producto:');
     nuevoItem.desc = prompt('Descripción del producto:');
-    nuevoItem.peso = Number(prompt('Peso del producto'));
-    nuevoItem.precio = Number(prompt('Precio del producto:'));
+    do{
+        nuevoItem.peso = Number(prompt('Peso del producto'));
+        if(Number.isNaN(nuevoItem.peso) || nuevoItem.peso < 1){
+            alert("Ingresa un peso válido")
+        }
+    } while (Number.isNaN(nuevoItem.peso) || nuevoItem.peso < 1)
+    do{
+        nuevoItem.precio = Number(prompt('Precio del producto'));
+        if(Number.isNaN(nuevoItem.precio) || nuevoItem.precio < 1){
+            alert("Ingresa un precio válido")
+        }
+    } while (Number.isNaN(nuevoItem.precio) || nuevoItem.precio < 1)
     stock.push(nuevoItem);
     alert("El producto se ha creado con éxito");
-}
+};
 
 const eliminarDelStock = () => {
     
@@ -279,35 +290,44 @@ const modificarElStock = () => {
             lista = stock.map(stocks => {
                 return `${stocks.id} - ${stocks.prod} $${stocks.precio}`;
             });
-            itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el número del producto:\n\n\n')
+            do{
+                itemElegido = Number(prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el NÚMERO del producto:\n\n\n'));
+                console.log(itemElegido);
+            } while(itemElegido == null || itemElegido == 0);
             if (itemElegido >= 0 && itemElegido <= stock.length){
-                stock[itemElegido-1].peso = Number(prompt('Ingrese el nuevo peso para el producto'));
-                if(stock[itemElegido-1].peso< 1){
-                    alert("Debes colocar un peso válido");
-                } else {
-                    alert("El peso se ha modificado con éxito");
-                }   
+                do{
+                    stock[itemElegido-1].peso = Number(prompt('Ingrese el nuevo peso para el producto'));
+                    if(stock[itemElegido-1].peso< 1 || Number.isNaN(stock[itemElegido-1].peso)){
+                        alert("Debes colocar un peso válido");
+                    } else {
+                        alert("El peso se ha modificado con éxito");
+                    }
+                } while (stock[itemElegido-1].peso< 1 || Number.isNaN(stock[itemElegido-1].peso));
             } 
             break;
         case '4':
             lista = stock.map(stocks => {
                 return `${stocks.id} - ${stocks.prod} $${stocks.precio}`;
             });
-            itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el número del producto:\n\n\n')
+            do{
+                itemElegido = Number(prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el NÚMERO del producto:\n\n\n'));
+            } while(itemElegido == null || itemElegido == 0);
+            itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el NÚMERO del producto:\n\n\n')
             if (itemElegido >= 0 && itemElegido <= stock.length){
-                stock[itemElegido-1].precio = Number(prompt('Ingrese el nuevo precio para el producto'));
-                if(stock[itemElegido-1].precio < 1 ){
-                    alert("Debes colocar un precio válido");
-                } else {
-                    alert("El precio se ha modificado con éxito");
-                }
+                do{
+                    stock[itemElegido-1].precio = Number(prompt('Ingrese el nuevo precio para el producto'));
+                    if(stock[itemElegido-1].precio < 1 || Number.isNaN(stock[itemElegido-1].precio)){
+                        alert("Debes colocar un precio válido");
+                    } else {
+                        alert("El precio se ha modificado con éxito");
+                    }
+                } while (stock[itemElegido-1].precio < 1 || Number.isNaN(stock[itemElegido-1].precio));
             } 
             break;
         case '5':
             menuAdmin();
-            break;
         default:
-            break;
+            modificarElStock();
     }
     modificarElStock();
 };
