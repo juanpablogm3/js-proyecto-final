@@ -174,7 +174,6 @@ const sacarDelCarrito = () => {
         }
     });
     verElCarrito();
-
 };
     
 
@@ -252,11 +251,10 @@ const eliminarDelStock = () => {
 };
 
 const modificarElStock = () => {
-    let eleccion = prompt('\nQué deseas modificar?\n\n\n1 - Nombre de un producto\n\n2 - Descripción de un producto\n\n3 - Precio del producto\n\n4 - Salir\n\n\nIngresa el número de la opción:\n\n\n');
+    let eleccion = prompt('\nQué deseas modificar?\n\n\n1 - Nombre de un producto\n\n2 - Descripción de un producto\n\n3 - Peso del producto\n\n4 - Precio del producto\n\n5 - Salir\n\n\nIngresa el número de la opción:\n\n\n');
     let itemElegido = 0;
     let lista;
-    switch(eleccion){
-        
+    switch(eleccion){ 
         case '1':
             lista = stock.map(stocks => {
                 return `${stocks.id} - ${stocks.prod} $${stocks.precio}`;
@@ -283,11 +281,29 @@ const modificarElStock = () => {
             });
             itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el número del producto:\n\n\n')
             if (itemElegido >= 0 && itemElegido <= stock.length){
-                stock[itemElegido-1].precio = Number(prompt('Ingrese el nuevo precio para el producto'));
+                stock[itemElegido-1].peso = Number(prompt('Ingrese el nuevo peso para el producto'));
+                if(stock[itemElegido-1].peso< 1){
+                    alert("Debes colocar un peso válido");
+                } else {
+                    alert("El peso se ha modificado con éxito");
+                }   
             } 
-            alert("El precio se ha modificado con éxito");
             break;
         case '4':
+            lista = stock.map(stocks => {
+                return `${stocks.id} - ${stocks.prod} $${stocks.precio}`;
+            });
+            itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el número del producto:\n\n\n')
+            if (itemElegido >= 0 && itemElegido <= stock.length){
+                stock[itemElegido-1].precio = Number(prompt('Ingrese el nuevo precio para el producto'));
+                if(stock[itemElegido-1].precio < 1 ){
+                    alert("Debes colocar un precio válido");
+                } else {
+                    alert("El precio se ha modificado con éxito");
+                }
+            } 
+            break;
+        case '5':
             menuAdmin();
             break;
         default:
@@ -317,6 +333,4 @@ const menuAdmin= () => {
     menuAdmin();
 };
 
-
 inicio();
-
