@@ -1,9 +1,3 @@
-
-// finalizarCompra(){
-
-// }
-
-
 const carrito = [];
 
 const ordenarProductosMayor = () => {
@@ -16,7 +10,7 @@ const ordenarProductosMenor = () => {
 
 const cancelarCompra = () => {
     alert('Lamentamos que te vayas...\nPero te esperamos en tu próxima visita!');
-    itemNombre='jp';
+    alert("Gracias por usar nuestro software\n\n©2022 Todos los derechos reservados by Juan Pablo García Martínez")
 };
 
 
@@ -45,6 +39,8 @@ const saludoCliente = () => {
             let opcion = confirm('Quieres salir del programa?')
             if (opcion){
                 cancelarCompra();
+            } else {
+                saludoCliente();
             }
             break;
         default:
@@ -60,7 +56,6 @@ const agregarAlCarrito = (existeItem, itemId, itemCantidad) => {
         existeItem.cantidad += itemCantidad
         carrito.push(existeItem)
     }
-    console.log(carrito);
 };
 
 const comprarProductos = () => {
@@ -84,7 +79,6 @@ const comprarProductos = () => {
                 alert('Por favor ingresa una cantidad, elige tu producto otra vez');
                 comprarProductos();
             }
-            console.log(itemCantidad);
             agregarAlCarrito(existeItem, existeItem.id, itemCantidad)
         } else {
             alert('El producto no se encuentra en la lista')
@@ -127,7 +121,6 @@ const verElCarrito = () => {
     const miCarrito = carrito.map(items => {
         return `${items.cantidad} unidades de ${items.prod} a $${items.precio} cada una`;
     });
-    console.log(carrito);
     let opcion = prompt('Tu Carrito:'+'\n\n'+miCarrito.join('\n')+'\n\nQué deseas hacer?\n\n\n1 - Agregar Productos\n\n2 - Sacar Productos\n\n3 - Finalizar la compra\n\n\n\nIngresa el número de la opción:\n\n\n');
     switch(opcion){
         case '1':
@@ -147,16 +140,18 @@ const verElCarrito = () => {
 
 const finalizarLaCompra = ()=> {
     const miCarritoFinal = carrito.map(items => {
-        const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-        const pesoTotal = carrito.reduce((acc, item) => acc + (item.peso * item.cantidad), 0);
-
-        return `${items.cantidad}u x ${items.prod} $${items.precio} Total por producto: $`${items.cantidad * items.precio}`\n\n\n
-        Peso total del pedido: ${pesoTotal}\n\nTotal a abonar: $${precioTotal}`;
+        return `${items.cantidad} unidades de ${items.prod} a $${items.precio} cada una`
     });
-    //ARREGLAR ESTA FUNCION
-    prompt('Totales del pedido:\n\n'+miCarritoFinal.join('\n'));    
-
-}
+    const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+    const pesoTotal = carrito.reduce((acc, item) => acc + (item.peso * item.cantidad), 0);
+    let confirmacion = confirm("Este es tu pedido\n\n"+miCarritoFinal.join('\n')+"\n\n\nPeso total del pedido: "+pesoTotal+" Kg\n\nTotal a abonar: $"+precioTotal+"\n\nDeseas confirmar la compra?");
+    if (confirmacion){
+        alert("El pedido está terminado, gracias por tu compra!");
+        cancelarCompra();
+    } else {
+        verElCarrito();
+    }
+};
 
 const sacarDelCarrito = () => {
     const miCarrito = carrito.map(items => {
@@ -209,7 +204,7 @@ const loguin = () => {
 };
 
 const inicio = () => {
-    let inicio = confirm('Bienvenido, visitas nuestra página como cliente?');
+    let inicio = confirm('Bienvenido, visitas nuestra página como cliente?\n\nAceptar para entrar\nCancelar para modo ADMIN');
     if (inicio){
         saludoCliente();
     } else {
@@ -217,8 +212,8 @@ const inicio = () => {
     }
 };
 
-const agregarAlStock = (nuevoProducto) => {
-    nuevoProducto = {
+const agregarAlStock = (nuevoItem) => {
+    nuevoItem = {
         id: stock.length+1,
         prod: 'prodNombre',
         desc: 'prodDesc',
@@ -226,11 +221,12 @@ const agregarAlStock = (nuevoProducto) => {
         precio: 'prodPrecio',
         cantidad: 0
     };
-    nuevoProducto.prod = prompt('Nombre del producto:');
-    nuevoProducto.desc = prompt('Descripción del producto:');
-    nuevoProducto.peso = Number(prompt('Peso del producto'));
-    nuevoProducto.precio = Number(prompt('Precio del producto:'));
-    stock.push(nuevoProducto);
+    nuevoItem.prod = prompt('Nombre del producto:');
+    nuevoItem.desc = prompt('Descripción del producto:');
+    nuevoItem.peso = Number(prompt('Peso del producto'));
+    nuevoItem.precio = Number(prompt('Precio del producto:'));
+    stock.push(nuevoItem);
+    alert("El producto se ha creado con éxito");
 }
 
 const eliminarDelStock = () => {
@@ -238,7 +234,6 @@ const eliminarDelStock = () => {
     const lista = stock.map(stocks => {
         return `${stocks.id} - ${stocks.prod} $${stocks.precio}`;
     });
-    console.log(stock);
     let itemNombreAEliminar ='';
     let itemAEliminar;
     itemNombreAEliminar = prompt('Qué producto deseas eliminar?\n\n'+lista.join('\n')+'\n\n\nIngresa el nombre del Producto:\n\n\n');
@@ -246,7 +241,6 @@ const eliminarDelStock = () => {
         itemAEliminar = stock.find(item => item.prod.toLowerCase() === itemNombreAEliminar.toLowerCase());
         if(confirm('Usted va a eliminar del Stock el producto '+itemAEliminar.prod+'\n\nEstá seguro?' )){
             stock.splice(itemAEliminar.id-1, 1);
-            console.log(stock);
             alert('El producto ha sido eliminado del stock con éxito')
             menuAdmin();
         }
@@ -270,8 +264,8 @@ const modificarElStock = () => {
             itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el número del producto:\n\n\n')
             if (itemElegido >= 0 && itemElegido <= stock.length){
                 stock[itemElegido-1].prod = prompt('Ingrese el nuevo nombre para el producto');
-                console.log(stock[itemElegido-1]);
             } 
+            alert("El nombre se ha modificado con éxito");
             break;
         case '2':
             lista = stock.map(stocks => {
@@ -280,8 +274,8 @@ const modificarElStock = () => {
             itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el número del producto:\n\n\n')
             if (itemElegido >= 0 && itemElegido <= stock.length){
                 stock[itemElegido-1].desc = prompt('Ingrese la nueva descripción para el producto');
-                console.log(stock[itemElegido-1]);
-            } 
+            }
+            alert("La descripción se ha modificado con éxito");
             break;
         case '3':
             lista = stock.map(stocks => {
@@ -290,8 +284,8 @@ const modificarElStock = () => {
             itemElegido = prompt('Qué producto deseas modificar?\n\n'+lista.join('\n')+'\n\n\nIngresa el número del producto:\n\n\n')
             if (itemElegido >= 0 && itemElegido <= stock.length){
                 stock[itemElegido-1].precio = Number(prompt('Ingrese el nuevo precio para el producto'));
-                console.log(stock[itemElegido-1]);
             } 
+            alert("El precio se ha modificado con éxito");
             break;
         case '4':
             menuAdmin();
@@ -303,7 +297,7 @@ const modificarElStock = () => {
 };
 
 const menuAdmin= () => {
-    alert('Bienvenido administrador a continuación te damos las opciones para modificar el stock');
+    alert('Bienvenido ADMIN, a continuación te damos las opciones para modificar el stock');
     let eleccion = prompt('\nQué deseas modificar?\n\n\n1 - Agregar un producto\n\n2 - Eliminar un producto\n\n3 - Modificar un producto\n\n4 - Salir\n\n\nIngrese el número de la opción:\n\n\n');
     switch(eleccion){
         case '1':
@@ -325,13 +319,4 @@ const menuAdmin= () => {
 
 
 inicio();
-//comprarProductos();
-//saludoCliente();
-//ordenarProductosMayor();
-//console.log(stock);
-//mostrarProductos();
-//itemNombreAEliminar = prompt('Qué producto deseas eliminar?\n\n\nIngresa el Producto:\n\n');
-//modificarElStock();
-//console.log(productoAEliminar);
-//eliminarDelStock();
-//console.log(stock);
+
