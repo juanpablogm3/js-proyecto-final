@@ -352,4 +352,4 @@ const menuAdmin= () => {
     menuAdmin();
 };
 
-inicio();
+//inicio();
