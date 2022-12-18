@@ -5,7 +5,8 @@ const stock = [
 		desc: "Croquetas sabor carne y vegetales 21 Kg",
 		peso: 21,
 		precio: 7500,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 2,
@@ -13,7 +14,8 @@ const stock = [
 		desc: "Croquetas sabor carne y pollo 21 Kg",
 		peso: 21,
 		precio: 7800,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 3,
@@ -21,7 +23,8 @@ const stock = [
 		desc: "Alimento seco sabor carne y pollo 15 Kg",
 		peso: 15,
 		precio: 8500,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 4,
@@ -29,7 +32,8 @@ const stock = [
 		desc: "Alimento seco sabor carne y pollo 15 Kg",
 		peso: 15,
 		precio: 8900,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 5,
@@ -37,7 +41,8 @@ const stock = [
 		desc: "Croquetas sabor carne y pollo 21 Kg",
 		peso: 21,
 		precio: 8100,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 6,
@@ -45,7 +50,8 @@ const stock = [
 		desc: "Croquetas minis sabor carne y pollo 21 Kg",
 		peso: 21,
 		precio: 8400,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 7,
@@ -53,7 +59,8 @@ const stock = [
 		desc: "Croquetas sabor carne y pollo 21 Kg",
 		peso: 21,
 		precio: 8400,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 8,
@@ -61,7 +68,8 @@ const stock = [
 		desc: "Alimento seco sabor carne de 10 Kg",
 		peso: 10,
 		precio: 6900,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 9,
@@ -69,7 +77,8 @@ const stock = [
 		desc: "Alimento sabor arroz y pollo de 20 Kg",
 		peso: 20,
 		precio: 8000,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 10,
@@ -77,7 +86,8 @@ const stock = [
 		desc: "Croquetas secas sabor salmón y atún de 15 Kg",
 		peso: 15,
 		precio: 9300,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 11,
@@ -85,7 +95,8 @@ const stock = [
 		desc: "Alimento sabor carne, pollo, cereales y vegetales 24Kg",
 		peso: 24,
 		precio: 7800,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 12,
@@ -93,7 +104,8 @@ const stock = [
 		desc: "Croquetas sabor carne con cereales de 15 Kg",
 		peso: 15,
 		precio: 7600,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 13,
@@ -101,7 +113,8 @@ const stock = [
 		desc: "Mix de carnes, cereales y vegetales 20 Kg",
 		peso: 20,
 		precio: 7000,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 14,
@@ -109,7 +122,8 @@ const stock = [
 		desc: "Alimento de pollo, carne y vegetales 20Kg",
 		peso: 20,
 		precio: 7600,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 15,
@@ -117,7 +131,8 @@ const stock = [
 		desc: "Croquetas sabor carne en 10 Kg",
 		peso: 10,
 		precio: 9800,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	},
 	{
 		id: 16,
@@ -125,6 +140,8 @@ const stock = [
 		desc: "Mini croquetitas sabor carne y leche 8 Kg",
 		peso: 8,
 		precio: 10500,
-		cantidad: 0
+		cantidad: 0,
+		oferta: false
 	}
 ]
+
