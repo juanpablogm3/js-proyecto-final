@@ -144,3 +144,4 @@ const stock = [
 		oferta: false
 	}
 ]
+

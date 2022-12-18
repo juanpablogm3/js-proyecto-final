@@ -1,5 +1,13 @@
 const carrito = [];
 
+const guardarStockToLocalStorage = () =>{
+    localStorage.setItem('stock', JSON.stringify(stock));
+};
+
+const recuperarStock = () => {
+    const currentStock = JSON.parse(localStorage.getItem('stock'));
+};
+
 const ordenarProductosMayor = () => {
     const stockMayor = stock.sort((a, b) => b.precio - a.precio)  
 };
@@ -352,4 +360,7 @@ const menuAdmin= () => {
     menuAdmin();
 };
 
+guardarStockToLocalStorage();
+
+console.log(recuperarStock());
 //inicio();
