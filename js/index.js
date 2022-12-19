@@ -1,11 +1,55 @@
 const carrito = [];
+let currentStock = [];
+let currentCarrito = [];
 
-const guardarStockToLocalStorage = () =>{
+const guardarStockLS = () =>{
     localStorage.setItem('stock', JSON.stringify(stock));
 };
 
-const recuperarStock = () => {
-    const currentStock = JSON.parse(localStorage.getItem('stock'));
+const recuperarStockLS = () => {
+    currentStock = JSON.parse(localStorage.getItem('stock'));
+};
+
+const guardarCarritoLS = () =>{
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+};
+
+const recuperarCarritoLS = () => {
+    currentCarrito = JSON.parse(localStorage.getItem('carrito'));
+};
+
+const renderItems = () => {
+    const contenedor = document.getElementById('itemContainer');
+
+    currentStock.forEach(producto => {
+        const div = document.createElement('div');
+        div.classList.add('card');
+        div.classList.add('product__container');
+        div.innerHTML += `
+            <div class="card-image">
+                <img src="${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
+                <span class="card-title">${producto.prod}</span>
+                <a class="btn-floating halfway-fab wabes-effect waves-light red" id="agregarAlCarrito"><i class="material-icons"><img src="./images/carrito_agregar.png" alt="agregar al carrito"></a>
+            </div>
+            <div class="card-content">
+                <p>${producto.desc}</p>
+                <p>${producto.peso}</p>
+                <p>$${producto.precio}</p>
+            </div>
+        `
+        //<div class="card product__container" style="width: 14rem;">
+		// 	<img src="../images/carrito_agregar.png" class="cart-add-prod" alt="Agregar al acarrito">
+		// 	<img src="${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
+		// 	<div class="card-body">
+		// 		<h5 class="card-title">${producto.prod}</h5>
+		// 		<p class="card-text">${producto.desc}</p>
+        //      <p class="card-text">${producto.peso}</p>
+        //      <p class="card-text">${producto.precio}</p>
+		// 	</div>
+		// </div>
+        
+        contenedor.appendChild(div);
+    })
 };
 
 const ordenarProductosMayor = () => {
@@ -360,7 +404,8 @@ const menuAdmin= () => {
     menuAdmin();
 };
 
-guardarStockToLocalStorage();
-
-console.log(recuperarStock());
+guardarStockLS();
+recuperarStockLS();
+console.log(currentStock);
+renderItems();
 //inicio();

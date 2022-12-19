@@ -6,7 +6,8 @@ const stock = [
 		peso: 21,
 		precio: 7500,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/pedigree.png'
 	},
 	{
 		id: 2,
@@ -15,7 +16,8 @@ const stock = [
 		peso: 21,
 		precio: 7800,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/pedigree_cach.png'
 	},
 	{
 		id: 3,
@@ -24,7 +26,8 @@ const stock = [
 		peso: 15,
 		precio: 8500,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/catchowgatos.png'
 	},
 	{
 		id: 4,
@@ -33,7 +36,8 @@ const stock = [
 		peso: 15,
 		precio: 8900,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/catchowgatitos.png'
 	},
 	{
 		id: 5,
@@ -42,7 +46,8 @@ const stock = [
 		peso: 21,
 		precio: 8100,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/dogchow.png'
 	},
 	{
 		id: 6,
@@ -51,7 +56,8 @@ const stock = [
 		peso: 21,
 		precio: 8400,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/dogchow_cach_ch.png'
 	},
 	{
 		id: 7,
@@ -60,7 +66,8 @@ const stock = [
 		peso: 21,
 		precio: 8400,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/dogchow_cach_med.png'
 	},
 	{
 		id: 8,
@@ -69,7 +76,8 @@ const stock = [
 		peso: 10,
 		precio: 6900,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/Infinity.png'
 	},
 	{
 		id: 9,
@@ -78,7 +86,8 @@ const stock = [
 		peso: 20,
 		precio: 8000,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/biopet.png'
 	},
 	{
 		id: 10,
@@ -87,7 +96,8 @@ const stock = [
 		peso: 15,
 		precio: 9300,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/9lives.png'
 	},
 	{
 		id: 11,
@@ -96,7 +106,8 @@ const stock = [
 		peso: 24,
 		precio: 7800,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/dogui.png'
 	},
 	{
 		id: 12,
@@ -105,7 +116,8 @@ const stock = [
 		peso: 15,
 		precio: 7600,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/gati.png'
 	},
 	{
 		id: 13,
@@ -114,7 +126,8 @@ const stock = [
 		peso: 20,
 		precio: 7000,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/sabrocitos.png'
 	},
 	{
 		id: 14,
@@ -123,7 +136,8 @@ const stock = [
 		peso: 20,
 		precio: 7600,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/sabrositos_gato.png'
 	},
 	{
 		id: 15,
@@ -132,7 +146,8 @@ const stock = [
 		peso: 10,
 		precio: 9800,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/whiskas.png'
 	},
 	{
 		id: 16,
@@ -141,7 +156,8 @@ const stock = [
 		peso: 8,
 		precio: 10500,
 		cantidad: 0,
-		oferta: false
+		oferta: false,
+		img: '/images/whiskas_cach.png'
 	}
 ]
 
