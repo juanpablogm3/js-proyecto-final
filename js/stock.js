@@ -7,7 +7,7 @@ const stock = [
 		precio: 7500,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/pedigree.png'
+		img: './images/pedigree.png'
 	},
 	{
 		id: 2,
@@ -17,7 +17,7 @@ const stock = [
 		precio: 7800,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/pedigree_cach.png'
+		img: './images/pedigree_cach.png'
 	},
 	{
 		id: 3,
@@ -27,7 +27,7 @@ const stock = [
 		precio: 8500,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/catchowgatos.png'
+		img: './images/catchowgatos.png'
 	},
 	{
 		id: 4,
@@ -37,7 +37,7 @@ const stock = [
 		precio: 8900,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/catchowgatitos.png'
+		img: './images/catchowgatitos.png'
 	},
 	{
 		id: 5,
@@ -47,7 +47,7 @@ const stock = [
 		precio: 8100,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/dogchow.png'
+		img: './images/dogchow.png'
 	},
 	{
 		id: 6,
@@ -57,7 +57,7 @@ const stock = [
 		precio: 8400,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/dogchow_cach_ch.png'
+		img: './images/dogchow_cach_ch.png'
 	},
 	{
 		id: 7,
@@ -67,7 +67,7 @@ const stock = [
 		precio: 8400,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/dogchow_cach_med.png'
+		img: './images/dogchow_cach_med.png'
 	},
 	{
 		id: 8,
@@ -77,7 +77,7 @@ const stock = [
 		precio: 6900,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/Infinity.png'
+		img: './images/Infinity.png'
 	},
 	{
 		id: 9,
@@ -87,7 +87,7 @@ const stock = [
 		precio: 8000,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/biopet.png'
+		img: './images/biopet.png'
 	},
 	{
 		id: 10,
@@ -97,7 +97,7 @@ const stock = [
 		precio: 9300,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/9lives.png'
+		img: './images/9lives.png'
 	},
 	{
 		id: 11,
@@ -107,7 +107,7 @@ const stock = [
 		precio: 7800,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/dogui.png'
+		img: './images/dogui.png'
 	},
 	{
 		id: 12,
@@ -117,7 +117,7 @@ const stock = [
 		precio: 7600,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/gati.png'
+		img: './images/gaty.png'
 	},
 	{
 		id: 13,
@@ -127,7 +127,7 @@ const stock = [
 		precio: 7000,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/sabrocitos.png'
+		img: './images/sabrocitos.png'
 	},
 	{
 		id: 14,
@@ -137,7 +137,7 @@ const stock = [
 		precio: 7600,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/sabrositos_gato.png'
+		img: './images/sabrositos_gato.png'
 	},
 	{
 		id: 15,
@@ -147,7 +147,7 @@ const stock = [
 		precio: 9800,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/whiskas.png'
+		img: './images/whiskas.png'
 	},
 	{
 		id: 16,
@@ -157,7 +157,7 @@ const stock = [
 		precio: 10500,
 		cantidad: 0,
 		oferta: false,
-		img: '/images/whiskas_cach.png'
+		img: './images/whiskas_cach.png'
 	}
 ]
 
