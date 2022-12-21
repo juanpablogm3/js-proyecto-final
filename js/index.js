@@ -1,6 +1,16 @@
-const carrito = [];
-let currentStock = [];
-let currentCarrito = [];
+const contenedor = document.getElementById('itemContainer');
+//onst pass = document.getElementById('login');
+const ordenCodigo  = document.getElementById('xCodigo');
+const ordenMayor  = document.getElementById('xMayorPrecio');
+const ordenMenor  = document.getElementById('xMenorPrecio');
+/* const   = document.getElementById('');
+const   = document.getElementById('');
+const   = document.getElementById('');
+const   = document.getElementById('');
+const   = document.getElementById('');
+const   = document.getElementById('');
+const   = document.getElementById(''); */
+
 
 const guardarStockLS = () =>{
     localStorage.setItem('stock', JSON.stringify(stock));
@@ -19,13 +29,12 @@ const recuperarCarritoLS = () => {
     currentCarrito = JSON.parse(localStorage.getItem('carrito'));
 };
 const renderItems = () => {
-    const contenedor = document.getElementById('itemContainer');
     currentStock.forEach(producto => {
         const div = document.createElement('div');
         div.innerHTML += `
             <div class="card product__container" style="width: 14rem;">
-                <img src="${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
-                <img src="./images/carrito_agregar.png" class="cart-add-prod" alt="Agregar al acarrito" width=40px>
+                <img src=".${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
+                <img src="./images/carrito_agregar.png" id="${producto.id-1}" class="cart-prod" alt="Agregar al acarrito" width=40px>
                 <div class="card-content">
                     <h5 class="card-title">${producto.prod}</h5>
                     <p>${producto.desc}</p>
@@ -33,23 +42,100 @@ const renderItems = () => {
                     <p>$${producto.precio}</p>
                 </div>
             </div>
-        `
-        contenedor.appendChild(div);
-    })
+            `
+            contenedor.appendChild(div);
+        })
+        const carritoAgregar0 = document.getElementById("0");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[0]);
+        })
+        const carritoAgregar1 = document.getElementById("1");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[1]);
+        })
+        const carritoAgregar2 = document.getElementById("2");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[2]);
+        })
+        const carritoAgregar3 = document.getElementById("3");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[3]);
+        })
+        const carritoAgregar4 = document.getElementById("4");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[4]);
+        })
+        const carritoAgregar5 = document.getElementById("5");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[5]);
+        })
+        const carritoAgregar6 = document.getElementById("6");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[6]);
+        })
+        const carritoAgregar7 = document.getElementById("7");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[7]);
+        })
+        const carritoAgregar8 = document.getElementById("8");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[8]);
+        })
+        const carritoAgregar9 = document.getElementById("9");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[9]);
+        })
+        const carritoAgregar10 = document.getElementById("10");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[10]);
+        })
+        const carritoAgregar11 = document.getElementById("11");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[11]);
+        })
+        const carritoAgregar12 = document.getElementById("12");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[12]);
+        })
+        const carritoAgregar13 = document.getElementById("13");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[13]);
+        })
+        const carritoAgregar14 = document.getElementById("14");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[14]);
+        })
+        const carritoAgregar15 = document.getElementById("15");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[15]);
+        })
+        const carritoAgregar16 = document.getElementById("16");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[16]);
+        })
+
+    console.log(carrito);
 };
 
-guardarStockLS();
-recuperarStockLS();
-renderItems();
-
-
-
 const ordenarProductosMayor = () => {
-    const stockMayor = stock.sort((a, b) => b.precio - a.precio)  
+    const stockMayor = stock.sort((a, b) => b.precio - a.precio)
+    guardarStockLS();
+    recuperarStockLS();
+    renderItems();
 };
 
 const ordenarProductosMenor = () => {
     const stockMenor = stock.sort((a, b) => a.precio - b.precio)
+    guardarStockLS();
+    recuperarStockLS();
+    renderItems();
+};
+
+const ordenarProductosCodigo = () => {
+    const stockMenor = stock.sort((a, b) => a.id - b.id)
+    guardarStockLS();
+    recuperarStockLS();
+    renderItems();
 };
 
 const cancelarCompra = () => {
@@ -220,9 +306,8 @@ const sacarDelCarrito = () => {
     });
     verElCarrito();
 };
-    
 
-const loguin = () => {
+const login = () => {
     let adminPassword = 123456; // esto obviamente estaría en la parte del servidor :)
     let userPassword = 0;
     userPassword = Number(prompt('Ingrese la contraseña de administrador: '));
@@ -234,7 +319,7 @@ const loguin = () => {
             opcion = prompt('Password incorrecto, desea intentar nuevamente? (si/no):')
             switch (opcion){
                 case 'si':
-                    loguin();
+                    login();
                     break;
                 case 'no':
                     inicio();
@@ -245,14 +330,51 @@ const loguin = () => {
            
         } while(opcion != 'si' && opcion != 'no')
     }
-};
+}; 
+
+/* 
+pass.addEventListener('click', (e) => {
+    login();
+    e.preventDefault();
+    console.log('hola');
+    /* e.innerHTML = `
+        <section class="vh-100 gradient-custom">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                            <div class="card-body p-5 text-center">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+                                    <h2 class="fw-bold mb-2 text-uppercase">Login ADMIN</h2>
+                                    <p class="text-white-50 mb-5">Please enter your login and password!</p>
+        
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                                        <label class="form-label" for="typePasswordX">Password</label>
+                                    </div>
+        
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Entrar</button>
+        
+                                </div>
+                                <div>
+                                    <p class="mb-0">Entraste por error?<a href="./index.html" class="text-white-50 fw-bold">Salir</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        `
+        pass.appendChild(e); */  
+   
 
 const inicio = () => {
     let inicio = confirm('Bienvenido, visitas nuestra página como cliente?\n\nAceptar para entrar\nCancelar para modo ADMIN');
     if (inicio){
         saludoCliente();
     } else {
-        loguin();
+        login();
     }
 };
 
@@ -395,3 +517,7 @@ const menuAdmin= () => {
     }
     menuAdmin();
 };
+
+guardarStockLS();
+recuperarStockLS();
+renderItems();

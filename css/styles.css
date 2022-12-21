@@ -1,0 +1,50 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.cont-space {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#itemContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cart-prod {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.cart-prod:hover {
+    cursor: pointer;
+}
+
+.card-content {
+    padding: 15px;    
+}
+
+.navbar{
+    min-height: 100px;
+    background: #6a11cb;
+}
+
+.product__container{
+    border: 2px solid black;
+    margin: 0.5rem 0rem;
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
