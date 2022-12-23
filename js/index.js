@@ -1,8 +1,12 @@
+let currentStock = [];
+let currentCarrito = [];
+
 const contenedor = document.getElementById('itemContainer');
-//onst pass = document.getElementById('login');
+const pass = document.getElementById('login');
 const ordenCodigo  = document.getElementById('xCodigo');
 const ordenMayor  = document.getElementById('xMayorPrecio');
 const ordenMenor  = document.getElementById('xMenorPrecio');
+
 /* const   = document.getElementById('');
 const   = document.getElementById('');
 const   = document.getElementById('');
@@ -18,7 +22,6 @@ const guardarStockLS = () =>{
 
 const recuperarStockLS = () => {
     currentStock = JSON.parse(localStorage.getItem('stock'));
-    console.log(currentStock);
 };
 
 const guardarCarritoLS = () =>{
@@ -28,13 +31,15 @@ const guardarCarritoLS = () =>{
 const recuperarCarritoLS = () => {
     currentCarrito = JSON.parse(localStorage.getItem('carrito'));
 };
+
 const renderItems = () => {
+    recuperarStockLS();
     currentStock.forEach(producto => {
         const div = document.createElement('div');
         div.innerHTML += `
             <div class="card product__container" style="width: 14rem;">
                 <img src=".${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
-                <img src="./images/carrito_agregar.png" id="${producto.id-1}" class="cart-prod" alt="Agregar al acarrito" width=40px>
+                <img src="./images/carrito_agregar.png" id="${producto.id-1}" value="${producto.id-1}" class="cart-prod agregar" alt="Agregar al acarrito" width=40px>
                 <div class="card-content">
                     <h5 class="card-title">${producto.prod}</h5>
                     <p>${producto.desc}</p>
@@ -43,100 +48,155 @@ const renderItems = () => {
                 </div>
             </div>
             `
-            contenedor.appendChild(div);
+            contenedor.appendChild(div);    
         })
+        /* contenedor.addEventListener('click', (e) => {
+            console.log(stock[e.target.value]);
+
+            e.stopPropagation();
+            //console.log(stock[producto.id]);
+            if (e.target.classList.contains('agregar')){
+                //console.log(stock[e.target.value]);
+                console.log(carrito);
+                /* carrito.push(stock[event.target.value]);
+                guardarCarritoLS();
+                console.log(carrito);
+            }
+        }) */
         const carritoAgregar0 = document.getElementById("0");
         carritoAgregar0.addEventListener("click", () => {
             carrito.push(stock[0]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar1 = document.getElementById("1");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar1.addEventListener("click", () => {
             carrito.push(stock[1]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar2 = document.getElementById("2");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar2.addEventListener("click", () => {
             carrito.push(stock[2]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar3 = document.getElementById("3");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar3.addEventListener("click", () => {
             carrito.push(stock[3]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar4 = document.getElementById("4");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar4.addEventListener("click", () => {
             carrito.push(stock[4]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar5 = document.getElementById("5");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar5.addEventListener("click", () => {
             carrito.push(stock[5]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar6 = document.getElementById("6");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar6.addEventListener("click", () => {
             carrito.push(stock[6]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar7 = document.getElementById("7");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar7.addEventListener("click", () => {
             carrito.push(stock[7]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar8 = document.getElementById("8");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar8.addEventListener("click", () => {
             carrito.push(stock[8]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar9 = document.getElementById("9");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar9.addEventListener("click", () => {
             carrito.push(stock[9]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar10 = document.getElementById("10");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar10.addEventListener("click", () => {
             carrito.push(stock[10]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar11 = document.getElementById("11");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar11.addEventListener("click", () => {
             carrito.push(stock[11]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar12 = document.getElementById("12");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar12.addEventListener("click", () => {
             carrito.push(stock[12]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar13 = document.getElementById("13");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar13.addEventListener("click", () => {
             carrito.push(stock[13]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar14 = document.getElementById("14");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar14.addEventListener("click", () => {
             carrito.push(stock[14]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
         const carritoAgregar15 = document.getElementById("15");
-        carritoAgregar0.addEventListener("click", () => {
+        carritoAgregar15.addEventListener("click", () => {
             carrito.push(stock[15]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
         })
-        const carritoAgregar16 = document.getElementById("16");
-        carritoAgregar0.addEventListener("click", () => {
-            carrito.push(stock[16]);
-        })
-
-    console.log(carrito);
 };
 
 const ordenarProductosMayor = () => {
     const stockMayor = stock.sort((a, b) => b.precio - a.precio)
     guardarStockLS();
     recuperarStockLS();
+    
     renderItems();
+    console.log('ordenado x mayor precio');
 };
+
+ordenMayor.addEventListener("click", () => {
+    ordenarProductosMayor();
+});
+
+const ordenarProductosCodigo = () => {
+    stock.sort((a, b) => a.id - b.id)
+    guardarStockLS();
+    recuperarStockLS();
+    renderItems();
+    console.log('ordenado x código');
+};
+
+ordenCodigo.addEventListener("click", () => {
+    ordenarProductosCodigo();
+});
 
 const ordenarProductosMenor = () => {
     const stockMenor = stock.sort((a, b) => a.precio - b.precio)
     guardarStockLS();
     recuperarStockLS();
     renderItems();
+    console.log('ordenado x menor precio');
 };
 
-const ordenarProductosCodigo = () => {
-    const stockMenor = stock.sort((a, b) => a.id - b.id)
-    guardarStockLS();
-    recuperarStockLS();
-    renderItems();
-};
+ordenMenor.addEventListener("click", () => {
+    ordenarProductosMenor();
+});
 
 const cancelarCompra = () => {
     alert('Lamentamos que te vayas...\nPero te esperamos en tu próxima visita!');
@@ -307,10 +367,27 @@ const sacarDelCarrito = () => {
     verElCarrito();
 };
 
-const login = () => {
+/* const login = () => {
     let adminPassword = 123456; // esto obviamente estaría en la parte del servidor :)
-    let userPassword = 0;
-    userPassword = Number(prompt('Ingrese la contraseña de administrador: '));
+    let userPassword;
+    const { value: password } = await Swal.fire({
+        title: 'Enter your password',
+        input: 'password',
+        inputLabel: 'Password',
+        inputPlaceholder: 'Ingrese la contraseña',
+        inputAttributes: {
+          maxlength: 10,
+          autocapitalize: 'off',
+          autocorrect: 'off'
+        }
+      })
+      
+      if (password===adminPassword) {
+
+
+        //Swal.fire(`Entered password: ${password}`)
+      }
+    /* userPassword = Number(prompt('Ingrese la contraseña de administrador: '));
     if (adminPassword===userPassword){
         menuAdmin();
     } else {
@@ -329,8 +406,8 @@ const login = () => {
             }
            
         } while(opcion != 'si' && opcion != 'no')
-    }
-}; 
+    } 
+};  */
 
 /* 
 pass.addEventListener('click', (e) => {
@@ -518,6 +595,4 @@ const menuAdmin= () => {
     menuAdmin();
 };
 
-guardarStockLS();
-recuperarStockLS();
 renderItems();

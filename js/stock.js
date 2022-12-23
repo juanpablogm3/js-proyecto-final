@@ -1,6 +1,4 @@
 const carrito = [];
-let currentStock = [];
-let currentCarrito = [];
 const stock = [
 	{
 		id: 1,
