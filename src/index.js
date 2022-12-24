@@ -1,217 +1,18 @@
-let currentStock = [];
-let currentCarrito = [];
-
-const contenedor = document.getElementById('itemContainer');
-const pass = document.getElementById('login');
-const ordenCodigo  = document.getElementById('xCodigo');
-const ordenMayor  = document.getElementById('xMayorPrecio');
-const ordenMenor  = document.getElementById('xMenorPrecio');
-
-/* const   = document.getElementById('');
-const   = document.getElementById('');
-const   = document.getElementById('');
-const   = document.getElementById('');
-const   = document.getElementById('');
-const   = document.getElementById('');
-const   = document.getElementById(''); */
-
-
-const guardarStockLS = () =>{
-    localStorage.setItem('stock', JSON.stringify(stock));
-};
-
-const recuperarStockLS = () => {
-    currentStock = JSON.parse(localStorage.getItem('stock'));
-};
-
-const guardarCarritoLS = () =>{
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-};
-
-const recuperarCarritoLS = () => {
-    currentCarrito = JSON.parse(localStorage.getItem('carrito'));
-};
-
-const renderItems = () => {
-    recuperarStockLS();
-    currentStock.forEach(producto => {
-        const div = document.createElement('div');
-        div.innerHTML = "";
-        div.innerHTML += `
-            <div class="card product__container" style="width: 14rem;">
-                <img src=".${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
-                <img src="./public/images/carrito_agregar.png" id="${producto.id}" value="${producto.id}" class="cart-prod agregar" alt="Agregar al acarrito" width=40px>
-                <div class="card-content">
-                    <h5 class="card-title">${producto.prod}</h5>
-                    <p>${producto.desc}</p>
-                    <p>Peso: ${producto.peso} Kg</p>
-                    <p>$${producto.precio}</p>
-                </div>
-            </div>
-            `
-            contenedor.appendChild(div);    
-        })
-        contenedor.addEventListener('click', (e) => {
-            console.log(stock[e.target.value]);
-
-            e.stopPropagation();
-            if (e.target.classList.contains('agregar')){
-                console.log(carrito);
-                carrito.push(stock[event.target.id]);
-                guardarCarritoLS();
-                console.log(carrito);
-            }
-        }) 
-        /* const carritoAgregar0 = document.getElementById("0");
-        carritoAgregar0.addEventListener("click", () => {
-            carrito.push(stock[0]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar1 = document.getElementById("1");
-        carritoAgregar1.addEventListener("click", () => {
-            carrito.push(stock[1]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar2 = document.getElementById("2");
-        carritoAgregar2.addEventListener("click", () => {
-            carrito.push(stock[2]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar3 = document.getElementById("3");
-        carritoAgregar3.addEventListener("click", () => {
-            carrito.push(stock[3]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar4 = document.getElementById("4");
-        carritoAgregar4.addEventListener("click", () => {
-            carrito.push(stock[4]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar5 = document.getElementById("5");
-        carritoAgregar5.addEventListener("click", () => {
-            carrito.push(stock[5]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar6 = document.getElementById("6");
-        carritoAgregar6.addEventListener("click", () => {
-            carrito.push(stock[6]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar7 = document.getElementById("7");
-        carritoAgregar7.addEventListener("click", () => {
-            carrito.push(stock[7]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar8 = document.getElementById("8");
-        carritoAgregar8.addEventListener("click", () => {
-            carrito.push(stock[8]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar9 = document.getElementById("9");
-        carritoAgregar9.addEventListener("click", () => {
-            carrito.push(stock[9]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar10 = document.getElementById("10");
-        carritoAgregar10.addEventListener("click", () => {
-            carrito.push(stock[10]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar11 = document.getElementById("11");
-        carritoAgregar11.addEventListener("click", () => {
-            carrito.push(stock[11]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar12 = document.getElementById("12");
-        carritoAgregar12.addEventListener("click", () => {
-            carrito.push(stock[12]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar13 = document.getElementById("13");
-        carritoAgregar13.addEventListener("click", () => {
-            carrito.push(stock[13]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar14 = document.getElementById("14");
-        carritoAgregar14.addEventListener("click", () => {
-            carrito.push(stock[14]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        })
-        const carritoAgregar15 = document.getElementById("15");
-        carritoAgregar15.addEventListener("click", () => {
-            carrito.push(stock[15]);
-            guardarCarritoLS();
-            recuperarCarritoLS();
-        }) */
-};
-
-const ordenarProductosMayor = () => {
-    const stockMayor = stock.sort((a, b) => b.precio - a.precio)
-    guardarStockLS();
-    recuperarStockLS();
-    
+document.addEventListener('DOMContentLoaded', () => {
     renderItems();
-    console.log('ordenado x mayor precio');
-};
 
-ordenMayor.addEventListener("click", () => {
-    ordenarProductosMayor();
+    if (localStorage.getItem('carrito')) {
+        carrito = recuperarCarritoLS();
+        console.log(carrito);
+        actualizarCarrito(carrito);
+    }
 });
 
-const ordenarProductosCodigo = () => {
-    stock.sort((a, b) => a.id - b.id)
-    guardarStockLS();
-    recuperarStockLS();
-    renderItems();
-    console.log('ordenado x código');
-};
 
-ordenCodigo.addEventListener("click", () => {
-    ordenarProductosCodigo();
-});
-
-const ordenarProductosMenor = () => {
-    const stockMenor = stock.sort((a, b) => a.precio - b.precio)
-    guardarStockLS();
-    recuperarStockLS();
-    renderItems();
-    console.log('ordenado x menor precio');
-};
-
-ordenMenor.addEventListener("click", () => {
-    ordenarProductosMenor();
-});
-
-const cancelarCompra = () => {
-    alert('Lamentamos que te vayas...\nPero te esperamos en tu próxima visita!');
-    alert("Gracias por usar nuestro software\n\n©2022 Todos los derechos reservados by Juan Pablo García Martínez")
-    itemNombre = '';
-};
+//const pass = document.getElementById('login');
 
 
-const mostrarProductos = () => {
-    const lista = stock.map(stocks => {
-        return `${stocks.id} - ${stocks.prod} $${stocks.precio}`;
-    });
-    alert('Estos son nuestros productos:'+'\n\n'+lista.join('\n'));
-};
-
-const saludoCliente = () => {
+/* const saludoCliente = () => {
     let eleccion = prompt('Bienvenido\n\nCómo deseas ordenar nuestra lista de productos?\n\n\n1 - Ordenar por código\n\n2 - Ordenar por menor precio\n\n3 - Ordenar por mayor precio\n\n4 - Salir\n\n\nIngresa el número de la opción:\n\n\n');
     switch(eleccion){
         case '1':
@@ -445,7 +246,7 @@ pass.addEventListener('click', (e) => {
         pass.appendChild(e); */  
    
 
-const inicio = () => {
+/* const inicio = () => {
     let inicio = confirm('Bienvenido, visitas nuestra página como cliente?\n\nAceptar para entrar\nCancelar para modo ADMIN');
     if (inicio){
         saludoCliente();
@@ -592,6 +393,103 @@ const menuAdmin= () => {
             menuAdmin();
     }
     menuAdmin();
-};
+}; */
 
-renderItems();
+
+
+        /* const carritoAgregar0 = document.getElementById("0");
+        carritoAgregar0.addEventListener("click", () => {
+            carrito.push(stock[0]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar1 = document.getElementById("1");
+        carritoAgregar1.addEventListener("click", () => {
+            carrito.push(stock[1]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar2 = document.getElementById("2");
+        carritoAgregar2.addEventListener("click", () => {
+            carrito.push(stock[2]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar3 = document.getElementById("3");
+        carritoAgregar3.addEventListener("click", () => {
+            carrito.push(stock[3]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar4 = document.getElementById("4");
+        carritoAgregar4.addEventListener("click", () => {
+            carrito.push(stock[4]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar5 = document.getElementById("5");
+        carritoAgregar5.addEventListener("click", () => {
+            carrito.push(stock[5]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar6 = document.getElementById("6");
+        carritoAgregar6.addEventListener("click", () => {
+            carrito.push(stock[6]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar7 = document.getElementById("7");
+        carritoAgregar7.addEventListener("click", () => {
+            carrito.push(stock[7]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar8 = document.getElementById("8");
+        carritoAgregar8.addEventListener("click", () => {
+            carrito.push(stock[8]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar9 = document.getElementById("9");
+        carritoAgregar9.addEventListener("click", () => {
+            carrito.push(stock[9]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar10 = document.getElementById("10");
+        carritoAgregar10.addEventListener("click", () => {
+            carrito.push(stock[10]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar11 = document.getElementById("11");
+        carritoAgregar11.addEventListener("click", () => {
+            carrito.push(stock[11]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar12 = document.getElementById("12");
+        carritoAgregar12.addEventListener("click", () => {
+            carrito.push(stock[12]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar13 = document.getElementById("13");
+        carritoAgregar13.addEventListener("click", () => {
+            carrito.push(stock[13]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar14 = document.getElementById("14");
+        carritoAgregar14.addEventListener("click", () => {
+            carrito.push(stock[14]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        })
+        const carritoAgregar15 = document.getElementById("15");
+        carritoAgregar15.addEventListener("click", () => {
+            carrito.push(stock[15]);
+            guardarCarritoLS();
+            recuperarCarritoLS();
+        }) */

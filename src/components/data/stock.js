@@ -1,4 +1,4 @@
-const stock = [
+let stock = [
 	{
 		id: 0,
 		prod: "Pedigree",
