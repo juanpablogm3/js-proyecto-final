@@ -68,7 +68,7 @@ const eliminarDelCarrito = (productoId) => {
 };
 
 const actualizarCarrito = (carrito) => {
-    const contenedor = document.getElementById('productoEnCarrito-contenedor');
+    const contenedor = document.getElementById('carrito-contenedor');
 
     contenedor.innerHTML = '';
 
@@ -118,17 +118,21 @@ const recuperarCarritoLS = () => {
 
 const actualizarTotCarrito = (carrito) => {
     const totalCantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    const totalPeso = carrito.reduce((acc, item) => acc + item.peso, 0);
     const totalCompra = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
 
-    pintarTotCarrito(totalCantidad, totalCompra);
-    guardarCarritoStorage(carrito);
+    pintarTotCarrito(totalCantidad, totalPeso, totalCompra);
+    guardarCarritoLS(carrito);
 };
 
-const pintarTotCarrito = (totalCantidad, totalCompra) => {
+const pintarTotCarrito = (totalCantidad, totalPeso, totalCompra) => {
     const contadorCarrito = document.getElementById('contador-carrito');
+    const pesoTotal = document.getElementById('pesoTotal');
     const precioTotal = document.getElementById('precioTotal');
-    console.log(contadorCarrito, precioTotal)
+    //console.log(contadorCarrito, precioTotal)
 
     contadorCarrito.innerText = totalCantidad;
-    precioTotal.innerText = totalCompra;
+    
+    pesoTotal.innerText = "Peso total del pedido: "+totalPeso+" Kg";
+    precioTotal.innerText = "El total de la compra es $ "+totalCompra;
 };

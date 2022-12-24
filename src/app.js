@@ -20,10 +20,7 @@ const renderItems = () => {
 };
 
 const ordenarProductosMayor = () => {
-    const stockMayor = stock.sort((a, b) => b.precio - a.precio)
-    guardarStockLS();
-    recuperarStockLS();
-    
+    const stockMayor = stock.sort((a, b) => b.precio - a.precio)    
     renderItems();
     console.log('ordenado x mayor precio');
 };
@@ -34,8 +31,6 @@ ordenMayor.addEventListener("click", () => {
 
 const ordenarProductosCodigo = () => {
     stock.sort((a, b) => a.id - b.id)
-    guardarStockLS();
-    recuperarStockLS();
     renderItems();
     console.log('ordenado x código');
 };
@@ -46,8 +41,6 @@ ordenCodigo.addEventListener("click", () => {
 
 const ordenarProductosMenor = () => {
     const stockMenor = stock.sort((a, b) => a.precio - b.precio)
-    guardarStockLS();
-    recuperarStockLS();
     renderItems();
     console.log('ordenado x menor precio');
 };
