@@ -36,10 +36,11 @@ const renderItems = () => {
     recuperarStockLS();
     currentStock.forEach(producto => {
         const div = document.createElement('div');
+        div.innerHTML = "";
         div.innerHTML += `
             <div class="card product__container" style="width: 14rem;">
                 <img src=".${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
-                <img src="./images/carrito_agregar.png" id="${producto.id-1}" value="${producto.id-1}" class="cart-prod agregar" alt="Agregar al acarrito" width=40px>
+                <img src="./public/images/carrito_agregar.png" id="${producto.id}" value="${producto.id}" class="cart-prod agregar" alt="Agregar al acarrito" width=40px>
                 <div class="card-content">
                     <h5 class="card-title">${producto.prod}</h5>
                     <p>${producto.desc}</p>
@@ -50,20 +51,18 @@ const renderItems = () => {
             `
             contenedor.appendChild(div);    
         })
-        /* contenedor.addEventListener('click', (e) => {
+        contenedor.addEventListener('click', (e) => {
             console.log(stock[e.target.value]);
 
             e.stopPropagation();
-            //console.log(stock[producto.id]);
             if (e.target.classList.contains('agregar')){
-                //console.log(stock[e.target.value]);
                 console.log(carrito);
-                /* carrito.push(stock[event.target.value]);
+                carrito.push(stock[event.target.id]);
                 guardarCarritoLS();
                 console.log(carrito);
             }
-        }) */
-        const carritoAgregar0 = document.getElementById("0");
+        }) 
+        /* const carritoAgregar0 = document.getElementById("0");
         carritoAgregar0.addEventListener("click", () => {
             carrito.push(stock[0]);
             guardarCarritoLS();
@@ -158,7 +157,7 @@ const renderItems = () => {
             carrito.push(stock[15]);
             guardarCarritoLS();
             recuperarCarritoLS();
-        })
+        }) */
 };
 
 const ordenarProductosMayor = () => {
