@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    renderItems();
-
     if (localStorage.getItem('carrito')) {
         carrito = recuperarCarritoLS();
         console.log(carrito);
         actualizarCarrito(carrito);
     }
+    renderItems();
 });
 
 

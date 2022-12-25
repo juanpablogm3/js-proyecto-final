@@ -37,7 +37,7 @@
 						</li> -->
 					</li>
 					<li>
-						<button id="cesta-carrito"><i class="fas fa-shopping-cart"></i><span id="contador-carrito">0</span></button>
+						<button id="cesta-carrito"><i class="fas fa-shopping-cart"><span id="contador-carrito">0</span></i></button>
 					</li>
 				</ul>
 		    </div>
@@ -47,24 +47,23 @@
 			<!-- // aca van todos los productos pintados desde index.js / leidos desde stock.js -->
 	</section>
 	<!-- MODAL  -->
-	<section class="h-100 h-custom" id="modal-contenedor" style="background-color: #eee;">
-		<div class="container py-5 h-100">
+	<section class="modal-contenedor" id="modal-contenedor" style="background-color: rgb(226, 225, 225, 0.8);">
+		
 		  	<div class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col">
 			 		<div class="card">
-						<div class="card-body p-4"> 
+						<div class="card-body lg-7 p-4 fondo-carrito"> 
 				  			<div class="row" id="modal-carrito">
 	  							<div class="col-lg-7">
-									<h5 class="mb-3"><a href="#!" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a></h5>
-					  				<hr>
-									<button id="btn-cerrar-carrito"><i class="fas fa-times-circle"></i></button>
+									<h5 class="mb-3">Continuar comprando</a></h5>
+									<button id="btn-cerrar-carrito" class="btn-cerrar-carrito">Cerrar</button>
 									<div id="carrito-contenedor">
 					  <!-- ACA VAN LOS PRODUCTOS DEL CARRITO -->
 									</div>
 								</div>
 								<div class="col-lg-7">
 					  				<div class="card bg-primary text-white rounded-3">
-										<div class="card-body">
+										<div class="card-body totales">
 						  					<div class="mb-4">
 												<h5 class="mb-0">Resumen de compra</h5><hr>
 												<h5 class="mb-0" id="pesoTotal">Peso total del pedido: 0 Kg</h5>
@@ -85,7 +84,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 	</section>
 
 <!-- 	<div class="modal-contenedor">
