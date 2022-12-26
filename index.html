@@ -37,7 +37,7 @@
 						</li> -->
 					</li>
 					<li>
-						<button id="cesta-carrito"><i class="fas fa-shopping-cart"><span id="contador-carrito">0</span></i></button>
+						<button id="cesta-carrito" class="btn btn-primary position-relative"><img src="./public/images/carrito.png" alt="carrito de compras"><span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span><span class="visually-hidden">unread messages</span></button>
 					</li>
 				</ul>
 		    </div>
@@ -54,16 +54,16 @@
 			 		<div class="card">
 						<div class="card-body lg-7 p-4 fondo-carrito"> 
 				  			<div class="row" id="modal-carrito">
-	  							<div class="col-lg-7">
-									<h5 class="mb-3">Continuar comprando</a></h5>
+	  							<div class="col-lg-7" style="max-height: 400px; overflow-y: auto;">
+									<h5 class="mb-3">Este es tu carrito</h5>
 									<button id="btn-cerrar-carrito" class="btn-cerrar-carrito">Cerrar</button>
 									<div id="carrito-contenedor">
 					  <!-- ACA VAN LOS PRODUCTOS DEL CARRITO -->
 									</div>
 								</div>
 								<div class="col-lg-7">
-					  				<div class="card bg-primary text-white rounded-3">
-										<div class="card-body totales">
+					  				<div class="card bg-primary text-white">
+										<div class="card-body totales rounded-3">
 						  					<div class="mb-4">
 												<h5 class="mb-0">Resumen de compra</h5><hr>
 												<h5 class="mb-0" id="pesoTotal">Peso total del pedido: 0 Kg</h5>
