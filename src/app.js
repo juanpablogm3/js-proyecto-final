@@ -7,11 +7,14 @@ const recuperarStockLS = () => {
     return stock;
 };
 
-const renderItems = () => {
+const renderItems = async () => {
     const contenedor = document.getElementById("itemContainer");
-    stock.forEach(producto => {
+
+    const productos = await indexController()
+    
+    productos.forEach(producto => {
         const div = document.createElement('div');
-        div.innerHTML = ''//saqué el +antes del igual de la linea siguiente
+        div.innerHTML = '';
         div.innerHTML += `
             <div class="card product__container" style="width: 14rem;">
                 <img src=".${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
