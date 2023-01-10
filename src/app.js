@@ -1,5 +1,5 @@
-const guardarStockLS = () =>{
-    localStorage.setItem('stock', JSON.stringify(stock));
+const guardarStockLS = (param) =>{
+    localStorage.setItem('stock', JSON.stringify(param));
 };
 
 const recuperarStockLS = () => {
@@ -10,8 +10,12 @@ const recuperarStockLS = () => {
 const renderItems = async () => {
     const contenedor = document.getElementById("itemContainer");
 
-    const productos = await indexController()
-    
+    let productos = await indexController();
+
+    if (localStorage.getItem('stock')){
+        productos = recuperarStockLS()
+    }
+
     productos.forEach(producto => {
         const div = document.createElement('div');
         div.innerHTML = '';
@@ -31,36 +35,39 @@ const renderItems = async () => {
     })
 };
 
-const ordenarProductosMayor = () => {
-    const stockMayor = stock.sort((a, b) => b.precio - a.precio)    
-    guardarStockLS();
+const ordenarProductosMayor = async () => {
+    const stockMayor = await indexController()
+    stockMayor.sort((a, b) => b.precio - a.precio)    
+    guardarStockLS(stockMayor);
     renderItems();
     location.reload();
-    console.log('ordenado x mayor precio', stock);
+    console.log('ordenado x mayor precio', stockMayor);
 };
 const ordenMayor  = document.getElementById('xMayorPrecio');
 ordenMayor.addEventListener("click", () => {
     ordenarProductosMayor();
 });
 
-const ordenarProductosCodigo = () => {
-    stock.sort((a, b) => a.id - b.id)
-    guardarStockLS();
+const ordenarProductosCodigo = async () => {
+    const stockCodigo = await indexController()
+    stockCodigo.sort((a, b) => a.id - b.id)
+    guardarStockLS(stockCodigo);
     renderItems();
     location.reload();
-    console.log('ordenado x código', stock);
+    console.log('ordenado x código', stockCodigo);
 };
 const ordenCodigo  = document.getElementById('xCodigo');
 ordenCodigo.addEventListener("click", () => {
     ordenarProductosCodigo();
 });
 
-const ordenarProductosMenor = () => {
-    const stockMenor = stock.sort((a, b) => a.precio - b.precio)
-    guardarStockLS();
+const ordenarProductosMenor = async () => {
+    const stockMenor = await indexController()
+    stockMenor.sort((a, b) => a.precio - b.precio)
+    guardarStockLS(stockMenor);
     renderItems();
     location.reload();
-    console.log('ordenado x menor precio', stock);
+    console.log('ordenado x menor precio', stockMenor);
 };
 const ordenMenor  = document.getElementById('xMenorPrecio');
 ordenMenor.addEventListener("click", () => {

@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
         carrito = recuperarCarritoLS();
         actualizarCarrito(carrito);
     }
-  /*   if (localStorage.getItem('stock')){
+    if (localStorage.getItem('stock')){
         stock = recuperarStockLS();
-    } */
+    }
     renderItems();
 });

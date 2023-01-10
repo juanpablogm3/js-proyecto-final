@@ -7,7 +7,7 @@
 		"precio": 7500,
 		"cantidad": 1,
 		"oferta": false,
-		"img": "/public/images/pedigree.png"
+		"img": "./public/images/pedigree.png"
 	},
 	{
 		"id": 1,
@@ -17,7 +17,7 @@
 		"precio": 7800,
 		"cantidad": 1,
 		"oferta": false,
-		"img": "/public/images/pedigree_cach.png"
+		"img": "./public/images/pedigree_cach.png"
 	},
 	{
 		"id": 2,
