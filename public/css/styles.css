@@ -85,3 +85,16 @@ body{
 .totales {
     background: linear-gradient(rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
 }
+.finalizar {
+    color: white;
+    font-size: xx-large;
+    font-weight: 700;
+    text-align: center;
+    align-self: center;
+    cursor: pointer;
+
+}
+
+.checkout{
+    margin-bottom: 50px;
+}

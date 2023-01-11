@@ -9,16 +9,14 @@ const recuperarStockLS = () => {
 
 const renderItems = async () => {
     const contenedor = document.getElementById("itemContainer");
-
+    
     let productos = await indexController();
 
-    if (localStorage.getItem('stock')){
-        productos = recuperarStockLS()
-    }
+    localStorage.getItem('stock') ? productos = recuperarStockLS() : guardarStockLS(productos);
 
+    contenedor.innerHTML = '';
     productos.forEach(producto => {
         const div = document.createElement('div');
-        div.innerHTML = '';
         div.innerHTML += `
             <div class="card product__container" style="width: 14rem;">
                 <img src=".${producto.img}" class="card-img-top product__image" alt="${producto.desc}">
@@ -40,7 +38,6 @@ const ordenarProductosMayor = async () => {
     stockMayor.sort((a, b) => b.precio - a.precio)    
     guardarStockLS(stockMayor);
     renderItems();
-    location.reload();
     console.log('ordenado x mayor precio', stockMayor);
 };
 const ordenMayor  = document.getElementById('xMayorPrecio');
@@ -53,7 +50,6 @@ const ordenarProductosCodigo = async () => {
     stockCodigo.sort((a, b) => a.id - b.id)
     guardarStockLS(stockCodigo);
     renderItems();
-    location.reload();
     console.log('ordenado x código', stockCodigo);
 };
 const ordenCodigo  = document.getElementById('xCodigo');
@@ -66,7 +62,6 @@ const ordenarProductosMenor = async () => {
     stockMenor.sort((a, b) => a.precio - b.precio)
     guardarStockLS(stockMenor);
     renderItems();
-    location.reload();
     console.log('ordenado x menor precio', stockMenor);
 };
 const ordenMenor  = document.getElementById('xMenorPrecio');
