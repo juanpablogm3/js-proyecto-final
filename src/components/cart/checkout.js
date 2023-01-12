@@ -175,9 +175,20 @@ const pintarCheckout = () => {
 };
 
 const carritoVacio = () => {
-    //alerta de que el carrito está vacío y redirigir a home hacer con SWEETALERT2
-    alert("el carrito está vacío");
-    location.reload();
+    //alerta de que el carrito está vacío y redirigir a home con SWEETALERT2
+    Swal.fire({
+        icon: 'warning',
+        title: 'Tu carrito está vacío, serás redirigido a la lista de productos',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+    })
+    .then((result) => {
+        result.isConfirmed && location.reload()
+    })
 }
 
 

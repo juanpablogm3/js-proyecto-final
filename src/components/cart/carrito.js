@@ -22,12 +22,34 @@ const validarRepetido = (productoId) => {
         actualizarCarrito(carrito);
         guardarCarritoLS(carrito);
     }
+    Toastify({
+        text: 'Producto Agregado',
+        duration: 1000,
+        position: 'center',
+        style: {
+            background: 'linear-gradient(rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))'
+        },
+        offset: {
+            x: -100
+        }
+    }).showToast();
 };
 
 const eliminarDelCarrito = (productoId) => {
     const productoIndex = carrito.findIndex(producto => producto.id == productoId);
     carrito.splice(productoIndex, 1);
     actualizarCarrito(carrito);
+    Toastify({
+        text: 'Producto Eliminado',
+        duration: 1000,
+        position: 'center',
+        style: {
+            background: 'linear-gradient(rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))'
+        },
+        offset: {
+            x: -100
+        }
+    }).showToast();
 };
 
 const actualizarCarrito = (carrito) => {
@@ -98,3 +120,6 @@ const pintarTotCarrito = (totalCantidad, totalPeso, totalCompra) => {
     precioTotal.innerText = "El total de la compra es $ "+totalCompra;
     totalCarrito.innerText = "$ "+totalCompra;
 };
+
+
+
