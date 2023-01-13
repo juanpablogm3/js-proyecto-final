@@ -5,6 +5,19 @@ const indexController = async () => {
         return items
 
     } catch (error) {
-        console.log(error)
+        Swal.fire({
+            icon: 'error',
+            title: 'Hubo un error',
+            text: error,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        .then((result) => {
+            result.isConfirmed && location.reload()
+        })
     }
 };

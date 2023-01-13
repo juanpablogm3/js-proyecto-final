@@ -1,11 +1,8 @@
 let carrito = [];
 
 const contenedor = document.getElementById('itemContainer');
-
 contenedor.addEventListener('click', (e) => {
-    if (e.target.classList.contains('agregar')) {
-            validarRepetido(e.target.id)
-    }
+    e.target.classList.contains('agregar') && validarRepetido(e.target.id)
 });
 
 const validarRepetido = (productoId) => {
@@ -45,9 +42,6 @@ const eliminarDelCarrito = (productoId) => {
         position: 'center',
         style: {
             background: 'linear-gradient(rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))'
-        },
-        offset: {
-            x: -100
         }
     }).showToast();
 };
@@ -92,7 +86,7 @@ const actualizarCarrito = (carrito) => {
     });
 };
 
-const guardarCarritoLS = (carrito) =>{
+const guardarCarritoLS = () =>{
     localStorage.setItem('carrito', JSON.stringify(carrito));
 };
 
@@ -100,7 +94,6 @@ const recuperarCarritoLS = () => {
     const currentCarrito = JSON.parse(localStorage.getItem('carrito'));
     return currentCarrito;
 };
-
 
 const actualizarTotCarrito = (carrito) => {
     const totalCantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
@@ -120,6 +113,3 @@ const pintarTotCarrito = (totalCantidad, totalPeso, totalCompra) => {
     precioTotal.innerText = "El total de la compra es $ "+totalCompra;
     totalCarrito.innerText = "$ "+totalCompra;
 };
-
-
-
