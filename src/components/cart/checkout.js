@@ -8,7 +8,7 @@ const pintarCheckout = () => {
     cerrarCarrito.click();
 
     const contenedor = document.getElementById("itemContainer");
-
+    
     contenedor.innerHTML = '';
    
         const div = document.createElement('div');
@@ -16,11 +16,11 @@ const pintarCheckout = () => {
         <div class="d-flex justify-content-center checkout">
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Dirección de Facturación</h4>
-                <form class="needs-validation" novalidate="">
+                <form name="finform" id="finalizarPago" onSubmit="finalizar(); return false;" class="needs-validation finalizarPago" novalidate="">
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="Nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="true">
                             <div class="invalid-feedback">
                                 Ingrese un nombre válido.
                             </div>
@@ -165,7 +165,7 @@ const pintarCheckout = () => {
     
                     <hr class="my-4">
     
-                    <button id="finalizarPago" class="w-100 btn btn-primary btn-lg finalizarPago" type="submit">Confirmar pago</button>
+                    <input id="finPago" type="submit" class="w-100 btn btn-primary btn-lg finPago" value="Confirmar pago">
                 </form>
             </div>
         </div>
@@ -174,10 +174,11 @@ const pintarCheckout = () => {
         contenedor.appendChild(div);    
 };
 
-const carritoVacio = async () => {
+const carritoVacio = () => {
     Swal.fire({
         icon: 'warning',
-        title: 'Tu carrito está vacío, serás redirigid@ a la lista de productos',
+        title: 'Tu carrito está vacío',
+        text: 'Serás redirigid@ a la lista de productos',
         showClass: {
           popup: 'animate__animated animate__fadeInDown'
         },
@@ -186,14 +187,11 @@ const carritoVacio = async () => {
         }
     })
     .then((result) => {
-        result.isConfirmed && location.reload()
+        result.isConfirmed && location.reload();
     })
 }
-const finalizarPago = async () => {
-    console.log(carrito);
-    carrito = [];
-    guardarCarritoLS();
-    console.log(recuperarCarritoLS());
+
+const finalizar = () => {
     Swal.fire({
         icon: 'success',
         title: 'Gracias por tu compra!',
@@ -203,12 +201,15 @@ const finalizarPago = async () => {
         },
         hideClass: {
             popup: 'animate__animated animate__fadeOutUp'
+        },
+
+        didOpen: () => {
+            carrito = [];
+            guardarCarritoLS();
+            console.log(recuperarCarritoLS());
+        },
+        willClose: () => {
+            location.reload();
         }
-    }).then((result) => {
-       result.isConfirmed && location.reload()
-    })  
-}
-
-const btnFinalizarPago = document.getElementsByClassName('finalizarPago');
-btnFinalizarPago.addEventListener("submit", finalizarPago);
-
+    })
+};

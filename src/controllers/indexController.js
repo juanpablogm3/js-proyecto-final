@@ -17,7 +17,7 @@ const indexController = async () => {
             }
         })
         .then((result) => {
-            result.isConfirmed && location.reload()
+            //result.isConfirmed && location.reload()
         })
     }
 };
