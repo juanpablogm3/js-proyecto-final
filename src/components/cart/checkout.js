@@ -202,9 +202,7 @@ const finalizar = (e) => {
             popup: 'animate__animated animate__fadeOutUp'
         },   
         willClose: () => {
-            //document.getElementById("finalizarPago").submit();
             location.reload();
-
         }
     })
 };
