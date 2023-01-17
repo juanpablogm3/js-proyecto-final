@@ -13,8 +13,15 @@ const renderItems = async () => {
     let productos = await indexController();
 
     localStorage.getItem('stock') ? productos = recuperarStockLS() : guardarStockLS(productos);
-
+    
+    let {prod: productoDestacado} = productos[Math.floor(Math.random() * productos.length)];
+    
     contenedor.innerHTML = '';
+    contenedor.innerHTML = `
+        <div class="destacado">
+            <h2 class="productoDestacado">Producto del momento: ${productoDestacado}</h2>
+        </div>
+        `;
     productos.forEach(producto => {
         const div = document.createElement('div');
         div.innerHTML += `

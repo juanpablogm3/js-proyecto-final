@@ -16,8 +16,5 @@ const indexController = async () => {
               popup: 'animate__animated animate__fadeOutUp'
             }
         })
-        .then((result) => {
-            //result.isConfirmed && location.reload()
-        })
     }
 };
