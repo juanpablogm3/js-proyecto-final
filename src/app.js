@@ -45,7 +45,6 @@ const ordenarProductosMayor = async () => {
     stockMayor.sort((a, b) => b.precio - a.precio)    
     guardarStockLS(stockMayor);
     renderItems();
-    console.log('ordenado x mayor precio', stockMayor);
 };
 const ordenMayor  = document.getElementById('xMayorPrecio');
 ordenMayor.addEventListener("click", () => {
@@ -57,7 +56,6 @@ const ordenarProductosCodigo = async () => {
     stockCodigo.sort((a, b) => a.id - b.id)
     guardarStockLS(stockCodigo);
     renderItems();
-    console.log('ordenado x código', stockCodigo);
 };
 const ordenCodigo  = document.getElementById('xCodigo');
 ordenCodigo.addEventListener("click", () => {
@@ -69,7 +67,6 @@ const ordenarProductosMenor = async () => {
     stockMenor.sort((a, b) => a.precio - b.precio)
     guardarStockLS(stockMenor);
     renderItems();
-    console.log('ordenado x menor precio', stockMenor);
 };
 const ordenMenor  = document.getElementById('xMenorPrecio');
 ordenMenor.addEventListener("click", () => {
